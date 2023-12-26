@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Alcomsur - Administracion Personal</title>
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <h5 class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
+                
+                <h5 class="sidebar-brand-text mx-3">Proyecto</h5>
+            </h5>
+
+            <hr class="sidebar-divider my-0" />
+
+            <hr class="sidebar-divider" />
+
+            <div class="sidebar-heading">Interfaz</div>
+
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-text bg-transparent dropdown-toggle custom-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>&nbsp;&nbsp;Personal</span>
+                </button>
+                <div class="dropdown-menu" style="width: 270px;">
+                    <h6 class="collapse-header not-selectable">&nbsp;&nbsp;&nbsp;&nbsp;Administracion de Personal&nbsp;</h6>
+                    <a class="dropdown-item" routerLink="addStaff">Agregar Personal</a>
+                    <a class="dropdown-item" routerLink="personalTable">Administrar Personal</a>
+                </div>
+            </div>
+
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-text bg-transparent dropdown-toggle custom-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>&nbsp;&nbsp;Registros</span>
+                </button>
+                <div class="dropdown-menu" style="width: 270px;" >
+                    <h6 class="collapse-header not-selectable">&nbsp;&nbsp;&nbsp;&nbsp;Registros de Termos&nbsp;</h6>
+                    <a class="dropdown-item" routerLink="checkIn">Entrada de colaciones</a>
+                    <a class="dropdown-item" routerLink="checkOut">salida de colaciones</a>
+                </div>
+            </div>
+        <div class="btn-group dropend">
+            <button type="button" class="btn btn-text bg-transparent dropdown-toggle custom-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>&nbsp;&nbsp;Empresas</span>
+            </button>
+            <div class="dropdown-menu" style="width: 270px;" >
+                <h6 class="collapse-header not-selectable">&nbsp;&nbsp;&nbsp;&nbsp;Administracion de Empresa&nbsp;</h6>
+                <a class="dropdown-item" routerLink="addCompany">Agregar Empresas</a>
+                <a class="dropdown-item" routerLink="companyTable">Administrar Empresas</a>
+            </div>
+        </div>
+        
+            <hr class="sidebar-divider" />
+
+            <div class="sidebar-heading"></div>
+
+            <div class="btn-group dropend">
+                <button type="button" (click)="clearAuthToken()" class="btn btn-text bg-transparent position-left-text" aria-expanded="false">
+                    <span>&nbsp;&nbsp;Cerrar Sesión</span>
+                </button>
+            </div>
+
+            <hr class="sidebar-divider d-none d-md-block" />
+
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <router-outlet ></router-outlet>
+        </div>
+        
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+
+<div class="p-5" style="display: block; width: 90%; margin: auto;">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Reportes!</h1>
+    </div>
+
+    <hr style="background-color: #4e73df; width: 100%; height: 1px; margin: auto;">
+    <br>
+    <input type="date" required="required" (change)="SendDataonChange($event)" [(ngModel)]="inputDate">
+
+    <form class="user ">
+        <div class="form-group row center-content d-flex justify-content-between">
+        </div>
+        <div class="row ">
+            <div class="col-4 custom-scroll">
+                <ol class="list-group  list-group-numbered" 
+                *ngFor="let report of reports"
+                >
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{report.empresa}}</div>
+                        {{report.descripcion}}
+                      </div>
+                      <span class="badge bg-primary rounded-pill">{{report.fecha}}</span>
+                  </ol>
+            </div>
+        </div>
+    </form>
+</div>

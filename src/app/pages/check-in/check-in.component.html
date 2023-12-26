@@ -1,0 +1,76 @@
+
+<div id="content">
+
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+        </form>
+    </nav>
+    <div class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Gestion de entrada</h1>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Listado de trabajadores
+                    <p style="float: right;">{{contCurrentPage+1}}</p></h6>
+                
+                <div class="dropdown" style="margin:20px 30px 0 0; display: inline-block;">
+                    <button class="btn btn-primary dropdown-toggle btn-sm" style="border-radius: 50px;"
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{titleDropdown}}
+                    </button>
+                    <ul class="dropdown-menu custom-scroll" style="overflow-y: auto; max-height: 90px;"
+                        aria-labelledby="dropdownMenuButton1">
+                        <app-dropdown-company
+                            [companies]="company"
+                            *ngFor="let company of companies"
+                        ></app-dropdown-company>
+                    </ul>
+                </div>
+
+                <input type="date" required="required" (change)="SendDataonChange($event)" [(ngModel)]="inputDate">
+                
+                <div style="float: right;">
+                    <ng-container *ngIf="totalStaff>5" >
+                        <button type="button" style="margin-right: 9px;" 
+                        class="btn btn-secondary btn-sm"
+                         (click)="returnPage()" [disabled]="contCurrentPage === 0">Anterior</button><button type="button" class="btn btn-secondary btn-sm"
+                         (click)="nextPage()"
+                         [disabled]="contCurrentPage === (companies.length / limitPage - 1)">siguiente</button>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="tableLoan" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Trabajador</th>
+                                <th>Empresa</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr 
+                            *ngFor="let entryData of inputData.slice(contCurrentPage* limitPage, (contCurrentPage +1)
+                            * limitPage)">
+                            <th>{{indexArray(entryData)+1}}</th>
+                            <th scope="row">{{entryData.nombre}}</th>
+                                <td>{{entryData.empresa}}</td>
+                                <td>{{entryData.fecha}}</td>
+                                <td>{{entryData.hora}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

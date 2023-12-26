@@ -1,0 +1,67 @@
+<div id="content">
+    <div class="container-fluid">
+        <h3 class=" mb-2 text-gray-800">Gestion de Personal</h3>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Listado de trabajadores 
+                    
+                    <p style="float: right;">{{contCurrentPage+1}}</p>
+                </h6>
+
+                <div class="dropdown" style="margin-top: 20px;">
+                    <button class="btn btn-primary dropdown-toggle btn-sm" style="border-radius: 40px;" type="button"
+                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{titleDropdown}}
+                    </button>
+
+                    <ul class="dropdown-menu custom-scroll" style="overflow-y: auto; max-height: 90px;"
+                        aria-labelledby="dropdownMenuButton1">
+                        <app-dropdown-company [companies]="company"
+                            *ngFor="let company of companies"></app-dropdown-company>
+                    </ul>
+                </div>
+                <div style="float: right;">
+                    <ng-container *ngIf="totalStaff>5" >
+                        <button type="button" style="margin-right: 9px;" 
+                        class="btn btn-secondary btn-sm"
+                         (click)="returnPage()" [disabled]="contCurrentPage === 0">Anterior</button><button type="button" class="btn btn-secondary btn-sm"
+                         (click)="nextPage()"
+                         [disabled]="contCurrentPage === (workers.length / limitPage - 1)">siguiente</button>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre Completo</th>
+                                <th>Empresa</th>
+                                <th colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr 
+                            *ngFor="let staff of workers.slice(contCurrentPage* limitPage, (contCurrentPage +1)
+                            * limitPage)">
+                                <th>{{indexArray(staff)+1}}</th>
+                                <th scope="row">{{staff.nombre}}</th>
+                                <td>{{staff.nombreEmpresa}}</td>
+                                <td>
+                                    <button type="button" (click)="SelectUpdate(staff.idTrabajador, staff)" class="btn btn-primary">Editar</button>
+                                    <button type="button" (click)="SelectDelete(staff.idTrabajador, staff.nombre)" style="margin-left: 20px;" class="btn btn-danger">Eliminar</button>
+                                    
+                                    <button type="button" (click)="GenerateQR(staff)" style="margin-left: 20px;" class="btn btn-success">generar QR</button>
+                                </td>
+                              </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
